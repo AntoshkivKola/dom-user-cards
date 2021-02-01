@@ -1,0 +1,96 @@
+@import './reset.css';
+
+:root {
+  font-family: Raleway, sans-serif;
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.cardsContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.cardWrapper {
+  display: flex;
+  /* border: 4px solid; */
+  margin: 2rem 1rem;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  
+  width: 262.5px;
+}
+
+.cardImageWrapper {
+  position: relative;
+  width: inherit;
+  height: 262.5px;
+}
+
+.initials {
+  font-size: 2rem;
+  color: white;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardImage {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+
+  height: inherit;
+  width: inherit;
+  object-fit: cover;
+  object-position: center;
+}
+
+.cardName {
+  margin: 1rem 0;
+  font-size: 1.5rem;
+}
+
+.cardDescription{
+  color: #7E7F85;
+}
+
+.iconsWrapper{
+  padding: 15px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.icon{
+  width: 3rem;
+  padding: 10px;
+  border: 1px solid #C6CACC;
+  border-radius: 2px;
+
+}
+
+.icon + .icon{
+  margin-left: 10px;
+} 
+
+.icon:hover{
+  border: 1px solid rgba(235, 115, 104,1);
+  background-color: rgba(235, 115, 104, 1); 
+}
+
+
+.cardName:empty::after,
+.initials:empty::after {
+  content: "Unknown";
+}

@@ -1,4 +1,4 @@
-@import './reset.css';
+@import "./reset.css";
 
 :root {
   font-family: Raleway, sans-serif;
@@ -24,7 +24,7 @@
 .cardContainer {
   display: flex;
   flex-direction: column;
-  
+
   width: 262.5px;
 }
 
@@ -32,6 +32,12 @@
   position: relative;
   width: inherit;
   height: 262.5px;
+}
+
+.activeCard {
+  background-color: #e1ebea;
+  border: 5px solid #e1ebea;
+  border-radius: 5px;
 }
 
 .initials {
@@ -61,34 +67,32 @@
   font-size: 1.5rem;
 }
 
-.cardDescription{
-  color: #7E7F85;
+.cardDescription {
+  color: #7e7f85;
 }
 
-.iconsWrapper{
+.iconsWrapper {
   padding: 15px 0;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
 }
 
-.icon{
+.icon {
   width: 3rem;
   padding: 10px;
-  border: 1px solid #C6CACC;
+  border: 1px solid #c6cacc;
   border-radius: 2px;
-
 }
 
-.icon + .icon{
+.icon + .icon {
   margin-left: 10px;
-} 
-
-.icon:hover{
-  border: 1px solid rgba(235, 115, 104,1);
-  background-color: rgba(235, 115, 104, 1); 
 }
 
+.icon:hover {
+  border: 1px solid rgba(235, 115, 104, 1);
+  background-color: rgba(235, 115, 104, 1);
+}
 
 .cardName:empty::after,
 .initials:empty::after {

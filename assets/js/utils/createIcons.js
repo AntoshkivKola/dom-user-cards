@@ -19,12 +19,14 @@ function createIconsWraprer({ id, contacts }) {
 function createIcon(alt, src, { className }) {
 
   const icon = document.createElement('img');
-  icon.setAttribute('alt', `${alt}`);
+  icon.setAttribute('alt', alt);
   icon.setAttribute('src', src);
 
   const iconLink = document.createElement('a');
+  iconLink.setAttribute('href', `http://${alt}`);
+  iconLink.setAttribute('target', '_blank');
   iconLink.classList.add(className);
-  // iconLink.dataset.id = id;
+
   iconLink.append(icon)
 
   return iconLink;

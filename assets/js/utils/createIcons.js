@@ -8,14 +8,7 @@ function createIconsWraprer({ id, contacts }) {
   for (const contact of [...contacts]) {
     const { hostname: contactName } = new URL(contact);
 
-    if (contactName === 'www.facebook.com') {
-      iconsWrapper.append(createIcon(contactName, SUPPORTED_SOCIA_NET.get(contactName), { className: 'icon' }));
-
-    } else if (contactName === 'twitter.com') {
-      iconsWrapper.append(createIcon(contactName, SUPPORTED_SOCIA_NET.get(contactName), { className: 'icon' }));
-
-    } else if (contactName === 'www.instagram.com') {
-
+    if (SUPPORTED_SOCIA_NET.has(contactName)) {
       iconsWrapper.append(createIcon(contactName, SUPPORTED_SOCIA_NET.get(contactName), { className: 'icon' }));
     }
   }

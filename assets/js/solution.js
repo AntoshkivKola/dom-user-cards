@@ -6,6 +6,12 @@
 //   .set('www.facebook.com', 'src_to_icon')
 //   .set('www.facebook.com', 'src_to_icon');
 
+const SUPPORTED_SOCIA_NET = new Map();
+SUPPORTED_SOCIA_NET.set('www.facebook.com', './assets/icons/facebook.svg');
+SUPPORTED_SOCIA_NET.set('twitter.com', './assets/icons/instagram.svg');
+SUPPORTED_SOCIA_NET.set('www.instagram.com', './assets/icons/twitter.svg');
+
+
 const cardContainer = document.getElementById('root');
 
 const cards = responseData.map((user) => createUserCards(user));
@@ -32,42 +38,38 @@ function createUserCards(user) {
     createImageWrapper(user),
     h3,
     p,
-    createIconsWraprer(user),
+    createIconsWraprer(user, SUPPORTED_SOCIA_NET),
   );
 
   return createElement('section', { classNames: ['cardWrapper'] }, article);
 }
 
 
-function createIconsWraprer({ id, contacts }) {
+function createIconsWraprer({ id, contacts }, SUPPORTED_SOCIA_NET) {
 
   const iconsWrapper = document.createElement('div');
   iconsWrapper.setAttribute('id', `icons${id}`);
   iconsWrapper.classList.add('iconsWrapper');
 
-  const userContarts = new Map();
-
   for (const contact of [...contacts]) {
     const contactName = new URL(contact).hostname;
-    
+
     if (contactName === 'www.facebook.com') {
-      userContarts.set(contact, './assets/icons/facebook.svg');
+      iconsWrapper.append(createIcon(contactName,SUPPORTED_SOCIA_NET.get(contactName), { className: 'icon' }));
+
     } else if (contactName === 'twitter.com') {
-      userContarts.set(contact, './assets/icons/instagram.svg');
-     
+      iconsWrapper.append(createIcon(contactName,SUPPORTED_SOCIA_NET.get(contactName), { className: 'icon' }));
+
     } else if (contactName === 'www.instagram.com') {
-      userContarts.set(contact, './assets/icons/twitter.svg');
+      
+      iconsWrapper.append(createIcon(contactName,SUPPORTED_SOCIA_NET.get(contactName), { className: 'icon' }));
     }
-  }
-  
-  for (const contact of [...userContarts]) {
-    iconsWrapper.append(createIcon(contact, { className: 'icon' }));
   }
 
   return iconsWrapper;
 }
 
-function createIcon([alt, src], { className }) {
+function createIcon(alt, src, { className }) {
 
   const icon = document.createElement('img');
   icon.setAttribute('alt', `${alt}`);

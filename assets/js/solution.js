@@ -21,7 +21,7 @@ function createUserCards(user) {
   const h3 = createElement(
     'h3',
     { classNames: ['cardName'] },
-    document.createTextNode(`${user.firstName} ${user.lastName}` || '')
+    document.createTextNode(`${user.firstName} ${user.lastName}`.trim() || '')
   );
 
   const article = createElement(

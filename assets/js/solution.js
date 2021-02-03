@@ -2,8 +2,12 @@
 
 const cardContainer = document.getElementById('root');
 
-const cards = responseData.map((user) => createUserCards(user));
-cardContainer.append(...cards);
+fetch('http://192.168.1.148:3000/users')
+  .then((response) => response.json())
+  .then((data) => {
+    const cards = data.map((user) => createUserCards(user));
+    cardContainer.append(...cards);
+  })
 
 function createUserCards(user) {
 

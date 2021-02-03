@@ -36,8 +36,6 @@
 
 .activeCard {
   background-color: #e1ebea;
-  border: 5px solid #e1ebea;
-  border-radius: 5px;
 }
 
 .initials {
@@ -72,7 +70,8 @@
 }
 
 .iconsWrapper {
-  padding: 15px 0;
+  padding-top: 15px;
+
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

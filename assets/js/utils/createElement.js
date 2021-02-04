@@ -7,11 +7,20 @@
  * @param {Node[]} children
  * @return {HTMLElement}
  */
-function createElement(type, { classNames, onClick }, ...children) {
+function createElement(type, { classNames, onClick, attributes }, ...children) {
   const elem = document.createElement(type);
   elem.classList.add(...classNames);
   elem.onclick = onClick;
-  //elem.addEventListener('click', onClick)
+
+ 
+  if (attributes) {
+    for (const attr of attributes) {
+      elem.setAttribute(attr[0], attr[1]);
+
+    }
+  }
+
+
   elem.append(...children);
   return elem;
 }

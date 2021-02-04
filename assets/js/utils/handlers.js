@@ -14,4 +14,20 @@ function handleImageLoad({
 
 function handleCardHighlight({ currentTarget }) {
   currentTarget.classList.toggle('activeCard');
+  
+
+  if (currentTarget.classList.contains('activeCard')) {
+    activeCardsId.push(Number(currentTarget.dataset.id));
+    renderActiveUsersName();
+  } else {
+    activeCardsId.forEach((elem, i) => {
+      if (elem === Number(currentTarget.dataset.id)) {
+        activeCardsId.splice(i, 1);
+        renderActiveUsersName();
+      }
+    });
+    
+  }
+
 }
+

@@ -1,12 +1,23 @@
 'use strict';
 
 const cardContainer = document.getElementById('root');
+const activeCardsId = [];
 
+/*
 fetch('http://192.168.1.148:3000/users')
+
+*/
+const idName = []
+fetch('./assets/js/data/users.json')
   .then((response) => response.json())
   .then((data) => {
-    const cards = data.map((user) => createUserCards(user));
+    const cards = data.map((user) => {
+      idName.push({id: user.id, name: user.firstName});
+      return createUserCards(user)
+    });
     cardContainer.append(...cards);
+
+    
   })
 
 function createUserCards(user) {
@@ -33,5 +44,5 @@ function createUserCards(user) {
     createIconsWraprer(user),
   );
 
-  return createElement('section', { classNames: ['cardWrapper'], onClick: handleCardHighlight }, article);
+  return createElement('section', { classNames: ['cardWrapper'], onClick: handleCardHighlight, attributes: [["data-id", user.id]]}, article);
 }

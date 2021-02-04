@@ -17,17 +17,28 @@ function handleCardHighlight({ currentTarget }) {
   
 
   if (currentTarget.classList.contains('activeCard')) {
-    activeCardsId.push(Number(currentTarget.dataset.id));
+    activeCardsId.push(Number(currentTarget.id));
     renderActiveUsersName();
   } else {
     activeCardsId.forEach((elem, i) => {
-      if (elem === Number(currentTarget.dataset.id)) {
+      if (elem === Number(currentTarget.id)) {
         activeCardsId.splice(i, 1);
         renderActiveUsersName();
       }
     });
     
   }
+}
 
+function handleActiveUserName({currentTarget:{dataset:{id}}}){
+  console.log(Number(id));
+  id = Number(id);
+  document.getElementById(id).classList.remove('activeCard');
+  activeCardsId.forEach((elem, i) => {
+    if (elem === Number(id)) {
+      activeCardsId.splice(i, 1);
+      renderActiveUsersName();
+    }
+  });
 }
 

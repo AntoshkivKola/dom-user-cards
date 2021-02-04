@@ -7,17 +7,15 @@ const activeCardsId = [];
 fetch('http://192.168.1.148:3000/users')
 
 */
-const idName = []
+const userIdName = []
 fetch('./assets/js/data/users.json')
   .then((response) => response.json())
   .then((data) => {
     const cards = data.map((user) => {
-      idName.push({id: user.id, name: user.firstName});
+      userIdName.push({id: user.id, name: user.firstName});
       return createUserCards(user)
     });
     cardContainer.append(...cards);
-
-    
   })
 
 function createUserCards(user) {
@@ -44,5 +42,5 @@ function createUserCards(user) {
     createIconsWraprer(user),
   );
 
-  return createElement('section', { classNames: ['cardWrapper'], onClick: handleCardHighlight, attributes: [["data-id", user.id]]}, article);
+  return createElement('section', { classNames: ['cardWrapper'], onClick: handleCardHighlight, attributes: [["id", user.id]]}, article);
 }

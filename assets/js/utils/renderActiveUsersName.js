@@ -3,17 +3,18 @@
 const acriveUsers = document.querySelector('#acriveUsers');
 
 function renderActiveUsersName() {
-  
+
   // очистка всего родителя
   while (acriveUsers.firstChild) {
     acriveUsers.removeChild(acriveUsers.firstChild);
   }
-  
+
   // новий рендер всех элементов
-  for(const name of idName){
+  for (const user of userIdName) {
     activeCardsId.forEach((elem) => {
-      if(name.id === elem){
-        acriveUsers.append(document.createTextNode(`${name.name} `));
+      if (user.id === elem) {
+        const span = createElement('span', { onClick: handleActiveUserName, attributes: [["data-id", user.id]] }, document.createTextNode(`${user.name} `));
+        acriveUsers.append(span);
       }
     });
   }

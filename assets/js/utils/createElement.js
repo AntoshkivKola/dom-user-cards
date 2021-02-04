@@ -9,10 +9,12 @@
  */
 function createElement(type, { classNames, onClick, attributes }, ...children) {
   const elem = document.createElement(type);
-  elem.classList.add(...classNames);
+  if (classNames) {
+    elem.classList.add(...classNames);
+  }
   elem.onclick = onClick;
 
- 
+
   if (attributes) {
     for (const attr of attributes) {
       elem.setAttribute(attr[0], attr[1]);
